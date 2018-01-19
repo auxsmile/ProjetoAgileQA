@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="jumbotron">
+
+		<article>			
+			<header>
+			<h2><%= @member.name %></h2> 			
+			</header>
+			<hr>
+			<p>CPF: <%= @member.cpf %></p>
+			<p>Email: <%= @member.email%> </p>
+			<p>Telefone: <%= @member.phone%> </p>
+			<ht>
+			<p>Perfil: <%= @member.profile%> </p>
+		</article>
+		
+
+
+		<%= link_to edit_member_path(@member), class:'btn btn-link' do %>
+		 		<i class="glyphicon glyphicon-edit">Editar</i>
+			<%end%>
+
+		<%= link_to member_path(@member),method: :delete, data:{ confirm: "Deseja deletar este member?"}, class:'btn btn-link' do %>
+				 <i class="glyphicon glyphicon-remove-sign">Deletar membro</i>
+		<%end%>
+
+
+		<%= link_to members_path, class:'btn btn-link' do %>
+		<i class="glyphicon glyphicon-chevron-left">Voltar</i>
+		<%end%>
+		
+
+	</div>
+ </div>

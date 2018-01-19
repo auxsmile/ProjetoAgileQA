@@ -1,0 +1,29 @@
+<div class="container">
+	<div class='jumbotron'>
+		<% if @unconformity.corrective_action.present? %>
+			<h3>Nome</h3>
+			<h3><%= @unconformity.corrective_action.name %></h3>
+			</br>
+			
+			<h3>Descrição</h3>
+			<%= @unconformity.corrective_action.description %>
+			<hr>
+			</br>
+			</br>
+			<%= render 'edit' %>
+		<% else %>
+			<div class="panel panel-default">
+			 	<div class="panel-heading"><h3>Ação Corretiva<h3></div>
+					  <h3>Vazio</h3>
+				</div>
+		<% end %>
+		
+				<%= link_to project_audit_unconformity_corrective_action_path(@project, @audit, @unconformity, @corrective_action),method: :delete, data:{ confirm: "Confirmar exclusão?"}, class:'btn btn-danger' do %>
+				 <i class="glyphicon glyphicon-remove-sign">Deletar</i>
+				<%end%>
+				<%= link_to project_audit_path(@project,@audit), class:'btn btn-primary' do %>
+				<i class="glyphicon glyphicon-chevron-left">Voltar</i>
+				<%end%>
+			</div>
+			
+</div>

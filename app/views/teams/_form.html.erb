@@ -1,0 +1,30 @@
+<%= form_for(@team) do |f| %>
+<%= render 'layouts/errors', object: @team %>
+
+	<p class="form-group">
+		<%= f.label :Nome_da_equipe %></br>
+		<%= f.text_field :name, class:"form-control" %>
+	</p>
+	<p class="form-group">
+		<%= f.label :project, "Projeto" %></br>
+		<%= collection_select(:team, :project_id, @project, :id, :name)%>
+	</p>
+	
+	<%= f.fields_for :members_roles do |member_role_field| %>
+	
+		<p class="form-group">
+			<%= member_role_field.label :member, "Membro" %></br>
+			<%= member_role_field.collection_select(:member_id, @members, :id, :name)%>
+		</p>
+		<p class="form-group">
+			<%= member_role_field.label :role, "Papel" %></br>
+			<%= member_role_field.collection_select(:role_id, @roles, :id, :name)%>
+		</p>
+	<%end%>
+	
+	
+		<%= f.submit class:'btn btn-primary' %>
+		<%= link_to 'Cancelar', teams_path, class:'btn btn-default' %>
+	</p>
+
+<%end%>

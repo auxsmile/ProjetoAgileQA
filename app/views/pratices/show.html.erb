@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="jumbotron">
+		<article>			
+			<header>
+				<h1><%= @pratice.name %></h1> 			
+			</header>
+			<hr>
+				<div class="panel-body">
+					<h3>Descrição</h3>
+						<div class="panel panel-default">
+							<p style= "text-align: justify;"><%= simple_format @pratice.description%></p>
+						</div>
+				</div>
+		</article>
+		<hr>
+		<%= link_to edit_pratice_path(@pratice), class:'btn btn-default' do %>
+		 		<i class="glyphicon glyphicon-edit">Editar</i>
+			<%end%>
+
+		<%= link_to "Deletar Prática", pratice_path(@pratice),method: :delete, data:{ confirm: "Deseja deletar este Processo?"}, class:'btn btn-default'%>
+		
+		<%= link_to "Votlar", pratices_path(@pratice), class:'btn btn-default'%>
+	</div>
+ </div>

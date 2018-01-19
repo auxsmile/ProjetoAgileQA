@@ -1,0 +1,25 @@
+<div class="container">
+
+	<% if @corrective_actions.size > 0 %>
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			  	<h3>Ação Corretiva<h3></div>
+				  	<h4>Nome</h4></br>
+						<td><%= corrective_action.name %></td>
+				</div>
+			</div>
+	<% else %>
+		<div class="panel panel-default">
+		 	<div class="panel-heading"><h3>Ação Corretiva<h3></div>
+				  <h3>Vazio</h3>
+				  
+			</div>
+			<%= link_to 'Criar ação corretiva', new_project_audit_unconformity_corrective_action_path(@project, @audit, @unconformity,@corrective_action), class: 'btn btn-primary' %>
+
+				<%= link_to project_audits_path(@project), class:'btn btn-link' do %>
+				<i class="glyphicon glyphicon-chevron-left">Voltar</i>
+				<%end%>
+				<hr>
+	<%end%>
+		</div>
+</div>

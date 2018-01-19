@@ -1,0 +1,17 @@
+<div class="nested-fields">
+	<div class="field">
+		<table class="table">
+			<tr>
+			  
+				<div class="form-group">
+      <%= f.label :Nome %>&nbsp<%= link_to_remove_association('', f, class:'glyphicon glyphicon-remove') %><br>
+      <%= f.text_field :name, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :Descrição %><br>
+      <%= f.text_area :description, class:"form-control"%>
+    </div>
+			</tr>	
+		</table>
+	</div>
+</div>

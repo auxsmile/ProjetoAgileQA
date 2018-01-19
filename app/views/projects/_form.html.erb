@@ -1,0 +1,57 @@
+	<%= form_for(@project) do |f| %>
+	<%= render '/layouts/errors', object: @project %>
+	
+		<div class="form-group">
+			<%= f.label :Nome %></br>
+			<%= f.text_field :name, class:"form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :Cliente %></br>
+			<%= f.text_field :client , class:"form-control"%>
+		</div>
+		<div class="form-group">
+			<%= f.label :Data_de_início %></br>
+			<%= f.date_select :initial_date, class:"form-control"%>
+		</div>
+		<div class="form-group">
+			<%= f.label :Data_de_entrega %></br>
+			<%= f.date_select :date_ready, class:"form-control"%>
+		</div>
+		<div class="form-group">
+			<%= f.label :Descrição %></br>
+			<%= f.text_area :description, class:"form-control"%>
+		</div>
+		<div class="form-group">
+			<%= f.label :Defina_o_processo %> </br>
+			<%= f.fields_for :procedures_project do |pp_fields| %>
+				<%= pp_fields.collection_select(:procedure_id, @procedures, :id, :name) %>
+			<%end%>
+		</div>
+	
+		<%= f.fields_for :team do |team_fields| %>
+			<div class="form-group">
+				<%= team_fields.label :Nome_da_equipe_do_projeto %></br>
+				<%= team_fields.text_field :name, class:"form-control"%>
+			</div>
+			<div class="member_roles">
+				<table class="table">
+					<tr>
+						<td width=100><%= team_fields.label :Membro %></td>
+						<td width=100><%= team_fields.label :Papél %></td>
+					</tr>
+				</table>
+				
+				<div id="member-roles">
+					<%= team_fields.fields_for :member_roles do |member_roles_fields| %>
+						<% render partial: "member_role_fields", locals: { f: member_roles_fields } %>
+					<%end%>
+					<p title="Adicionar membro"><%= link_to_add_association(" ", team_fields, :member_roles,  class:'glyphicon glyphicon-plus') %></p>
+				</div>
+			</div>
+			</br>
+		<%end%>
+	
+		<%= f.submit class:'btn btn-primary' %>
+		<%= link_to 'Cancelar', root_path, class:'btn btn-default' %>
+	<%end%>
+

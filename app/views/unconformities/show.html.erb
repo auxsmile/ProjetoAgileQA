@@ -1,0 +1,34 @@
+<div class='container'>
+	<div class='jumbotron'>
+		<article>
+			<header>
+				<h2><%= @unconformity.name %></h2>
+			</header>
+			<hr>
+			<h3>Descrição</h3>
+			<%= @unconformity.description %>
+		</article>
+
+	</div>
+
+	<%= link_to edit_project_audit_unconformity_path(@project, @audit, @unconformity), class:'btn btn-link' do %>
+		 		<i class="glyphicon glyphicon-edit">Editar</i>
+			<%end%>
+
+		<%= link_to project_audit_unconformity_path(@project, @audit, @unconformity),method: :delete, data:{ confirm: "Confirmar exclusão?"}, class:'btn btn-link' do %>
+				 <i class="glyphicon glyphicon-remove-sign">Deletar</i>
+		<%end%>
+	<%= link_to project_audit_path(@project, @audit), class:'btn btn-link' do %>
+	<i class="glyphicon glyphicon-chevron-left">Auditoria</i>
+	<%end%>
+	<% if @unconformity.corrective_action.present? %>
+		<%= link_to project_audit_unconformity_corrective_action_path(@project, @audit, @unconformity, @unconformity.corrective_action), class:'btn btn-link' do %>
+			 		<i class="glyphicon glyphicon-edit">Ação corretiva</i>
+			 		<%end%>
+	<%else%>
+		<%= link_to new_project_audit_unconformity_corrective_action_path(@project, @audit, @unconformity, @unconformity.corrective_action), class:'btn btn-link' do %>
+			 		<i class="glyphicon glyphicon-edit">Criar Ação corretiva</i>
+			 		<%end%>
+	<%end%>
+	<hr>
+</div>

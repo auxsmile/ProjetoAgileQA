@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  identification: MyString
+  description: MyText
+  date: 2017-03-30
+  schedule: MyString
+  type: 
+  completed: MyString
+  projetc_id: 
+
+two:
+  identification: MyString
+  description: MyText
+  date: 2017-03-30
+  schedule: MyString
+  type: 
+  completed: MyString
+  projetc_id: 

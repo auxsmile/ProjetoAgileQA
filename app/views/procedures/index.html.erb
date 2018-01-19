@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="pagee-header"><%= pluralize(@procedures.size, "Processo", "Processos") %> 
+				<small class="novo_projeto"><%= link_to new_procedure_path, class:'btn btn-default' do %> Novo Processo
+				<%end%></small>
+			</h1>
+		</div>
+	</div>
+
+	<% @procedures.each do |procedure| %>
+		<div class="row">
+			<div class="col-md-7">
+				<h3>
+					<p><%= link_to procedure.name , procedure%></p>
+				</h3>
+			</div>
+		</div>
+		<hr>
+
+<% end %>
+</div>

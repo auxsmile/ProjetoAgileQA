@@ -1,0 +1,11 @@
+<div class="nested-fields">
+	<div class="field">
+		<table class="table">
+			<tr>
+				<td width=500><%= f.collection_select(:member_id, @member, :id,:name) %></td>
+				<td width=500><%= f.collection_select(:role_id, @role.order(:name), :id, :name)%></td>
+				<td><p title="Remover"><%= link_to_remove_association('', f, class:'glyphicon glyphicon-remove') %></p></td>
+			</tr>	
+		</table>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+	<% @projects.each do |project| %>
+		<div class="hide_show">
+			<div class="row">
+				<div class="col-md-7">
+					<p><h2><%= link_to project.name , project%> <%= link_to 'Nova auditoria', new_project_audit_path(project), class: 'btn-xs btn-primary' %></p></h2>
+						<% project.audits.each do |audit| %>
+						<p>&nbsp
+  						<% if audit.completed == "Sim" %>
+  							<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-success' %>
+  						<% elsif audit.completed == "Não" %>
+  							 <%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-danger' %>
+  						<% else %>
+  						  <%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-default' %>
+  						<%end%>
+  						<small class='atalho'><%= audit.datetime%> às <%= audit.schedule.to_formatted_s(:time)%>hrs</small>
+  					</p>
+  					<%end%>
+				</div>
+			</div>
+			<hr>
+		</div>
+		
+  <%end%>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="center">
+		<div class="col-lg-12">
+			<% @projects.each do |project| %>
+					<h2><%= link_to project.name , project%> <small><%= pluralize(project.audits.size, "Auditoria","Auditorias")%></small></h2>
+					<div class="table-responsive">
+						<table style="text-align:center; width:75%;" class="table table-hover table-condensed table-bordered">
+							<tr><td><h4>Auditorias</td></h4><td><h4>Não Conformidades</td></h4><td><h4>Ação Corretiva</td></tr></h4>
+							
+								<% project.audits.order(:identification).each do |audit| %>
+								<tr>
+									<td>
+										<% if audit.completed == "Sim" %>
+											<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-success' %>
+										<% elsif audit.completed == "Não" %>
+											<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-danger' %>
+										<% else %>
+											<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-default' %>
+										<%end%>
+									</td>
+										<% if audit.unconformities.size > 0 %>
+										<td align=middle>
+			    						<% audit.unconformities.each do |unconformity| %></br>
+			    						<div class='row'>
+			    							<%= link_to unconformity.name , project_audit_unconformity_path(project, audit, unconformity), class: 'btn btn-default'%>
+			    						</div>
+			    						
+			        				<%end%>
+			        			</td>
+			        			<%else%>
+			        			<td align=middle>
+			          			<small>Não possui Não Conformidades</small>
+			          		</td>
+			          		<%end%>
+			          		<td align=middle>
+			          			<% audit.unconformities.each do |unconformity| %></br>
+			          			<div class='row'>
+				          			<% if unconformity.corrective_action.present? %>
+			          					<% if unconformity.corrective_action.completed == "Sim" %>
+														<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(project, audit, unconformity, unconformity.corrective_action), class: 'btn btn-success' %> &nbsp
+													<% elsif unconformity.corrective_action.completed == "Não" %>
+														<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(project, audit, unconformity, unconformity.corrective_action), class: 'btn btn-danger' %>	
+													<% else %>
+														<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(project, audit, unconformity, unconformity.corrective_action), class: 'btn btn-default' %>
+													<%end%>
+												<%else%>
+									  			<%= link_to 'Criar ação corretiva', new_project_audit_unconformity_corrective_action_path(project, audit, unconformity), class: 'btn btn-primary' %>
+									  		<%end%>
+									  	</div>
+										  <%end%>
+										 </td>
+			          </tr>
+								<%end%>
+						</table>
+					</div>
+			<%end%>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,2 @@
+module ProceduresProjectsHelper
+end

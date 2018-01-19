@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="jumbotron">
+
+		<article>			
+			<header>
+				<h1><%= @audit.identification %></h1> 			
+			</header>
+			<hr>
+			<h3>Data</h3>
+				<p><%= @audit.datetime%>
+			<h3>Horário</h3>
+			<p><%= @audit.schedule.to_formatted_s(:time) %>hrs</p>
+			<hr>
+			<h3>Descrição</h3>
+			<p><%=@audit.description%></p>
+		</article>
+		
+		<hr>
+		<%= render 'unconformities/index' %>
+		<hr>
+			<%= render 'edit' %>
+		<hr>
+		<%= link_to edit_project_audit_path(@project, @audit), class:'btn btn-link' do %>
+		 		<i class="glyphicon glyphicon-edit">Editar</i>
+			<%end%>
+
+		<%= link_to project_audit_path(@project, @audit),method: :delete, data:{ confirm: "Deseja deletar esta auditoria?"}, class:'btn btn-link' do %>
+				 <i class="glyphicon glyphicon-remove-sign">Deletar audit</i>
+		<%end%>
+		
+		<%= link_to project_audits_path(@project, @audit), class:'btn btn-link' do %>
+		<i class="glyphicon glyphicon-chevron-left">Voltar</i>
+		<%end%>
+	</div>
+ </div>

@@ -1,0 +1,16 @@
+  <%= form_for([@pratice]) do |f| %>
+  <%= render '/layouts/errors', object: @pratice %>
+  
+    <div class="form-group">
+      <%= f.label :Nome %><br>
+      <%= f.text_field :name, class:"form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :Descrição %><br>
+      <%= f.text_area :description, class:"form-control"%>
+    </div>
+      </br>
+      <%= f.submit class:'btn btn-primary' %>
+      <%= link_to 'Cancelar', pratices_path(@pratice), class:'btn btn-default' %>
+  <%end%>

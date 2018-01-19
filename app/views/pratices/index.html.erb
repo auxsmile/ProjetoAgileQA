@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="pagee-header"><%= pluralize(@pratices.size, "Prática", "Práticas") %> 
+				<small class="novo_projeto"><%= link_to new_pratice_path, class:'btn btn-default' do %> Nova Prática
+				<%end%></small>
+			</h1>
+		</div>
+	</div>
+
+		<div class="panel panel-default">
+		 	<% @pratices.order("name").each do |pratice| %>
+				<div class="row">
+					<div class="col-md-7">
+						<ul>
+							<p><%= link_to pratice.name , pratice%></p>
+						</ul>
+					</div>
+				</div>
+			<% end %>
+	  </div>
+</div>

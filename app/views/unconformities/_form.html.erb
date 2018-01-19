@@ -1,0 +1,15 @@
+<%= form_for([@project,@audit, @unconformity]) do |f| %>
+	<%= render 'layouts/errors', object: @unconformity %>
+		<p class="form-group">
+			<%= f.label :Nome %></br>
+			<%= f.text_field :name, autofocus: true, class:"form-control" %>
+		</p>
+		<p class="form-group">
+			<%= f.label :Descrição %></br>
+			<%= f.text_area :description, placeholder:"Descreva a Não Conformidade", class:"form-control"%>
+		</p>
+		<%= f.submit class:'btn btn-primary' %>
+		<%= link_to 'Cancelar', project_audit_path(@project, @audit), class:'btn btn-default' %>
+		</p>
+<%end%>
+

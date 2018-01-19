@@ -1,0 +1,26 @@
+<div class="container">
+	<% if @teams.size > 0 %>
+		<div class="panel panel-default">
+		 	<div class="panel-heading"><h3>teams<h3></div>
+		 	<% @teams.each do |team| %>
+				<div class="row">
+					<div class="col-md-7">
+						<ul>
+							<p><%= link_to team.nome , team%></p>
+						</ul>
+					</div>
+				</div>
+			<% end %>
+		</div>						  
+	<% else %>
+			<div class='jumbotron'>
+				<h3>Não existem equipes.</h3>
+			</div>
+	<%end%>
+
+			<%= link_to 'Cadastrar nova equipe', new_team_path(@team), class: 'btn btn-primary' %>
+
+				<%= link_to root_path, class:'btn btn-link' do %>
+				<i class="glyphicon glyphicon-chevron-left">Voltar</i>
+				<%end%>
+</div>

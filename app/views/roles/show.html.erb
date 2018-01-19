@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="jumbotron">
+
+		<article>			
+			<p><%= @role.name %></p>
+			<p><%= @role.description %></p>
+		</article>
+		
+
+
+		<%= link_to edit_role_path(@role), class:'btn btn-link' do %>
+		 		<i class="glyphicon glyphicon-edit">Editar</i>
+			<%end%>
+
+		<%= link_to role_path(@role),method: :delete, data:{ confirm: "Deseja deletar este role?"}, class:'btn btn-link' do %>
+				 <i class="glyphicon glyphicon-remove-sign">Deletar papel</i>
+		<%end%>
+
+
+		<%= link_to root_path, class:'btn btn-link' do %>
+		<i class="glyphicon glyphicon-chevron-left">Voltar</i>
+		<%end%>
+		
+
+	</div>
+ </div>

@@ -1,0 +1,24 @@
+<div class="container">
+	<% if @members.size > 0 %>
+		<div class="panel panel-default">
+		 	<div class="panel-heading"><h3>Membros<h3></div>
+		 	<% @members.each do |member| %>
+				<div class="row">
+					<div class="col-md-7">
+						<ul>
+							<p><%= link_to member.name , member%></p>
+						</ul>
+					</div>
+				</div>
+			<% end %>
+		</div>						  
+	<% else %>
+			<div class='jumbotron'>
+				<h3>Não existem membros.</h3>
+			</div>
+	<%end%>
+
+			<%= link_to 'Cadastrar novo membro', new_member_path(@member), class: 'btn btn-primary' %>
+
+				<%= link_to "Voltar",root_path, class:'btn btn-default'%>
+</div>

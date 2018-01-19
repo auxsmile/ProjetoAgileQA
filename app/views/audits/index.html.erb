@@ -1,0 +1,39 @@
+<div class="container">
+	<% if @audits.size > 0 %>
+		<div class="jumbotron">
+		<article>
+		<header>
+			<h2><%= "Auditorias de: #{@project.name}" %></h2>
+		</header>
+			<ul>
+				<% @audits.each do |audit| %>
+					<li>
+						<p>
+							<% if audit.completed == "Sim" %>
+								<%= link_to audit.identification, project_audit_path(@project, audit), class: 'btn btn-success' %> &nbsp
+							<% elsif audit.completed == "Não" %>
+								<%= link_to audit.identification, project_audit_path(@project, audit), class: 'btn btn-danger' %>	
+							<% else %>
+								<%= link_to audit.identification, project_audit_path(@project, audit), class: 'btn btn-default' %>
+							<%end%>
+							<small class='atalho'><%= pluralize(audit.unconformities.size, "Não Conformidade","Não Conformidades")%></small>
+						</p>
+					</li>
+				<% end %>	
+			</ul>
+		</div>
+	<% else %>
+		<div class='jumbotron'>
+			<h3>Não existem auditorias.</h3>
+		</div>
+	<%end%>
+
+<%= link_to 'Nova auditoria', new_project_audit_path(@project), class: 'btn btn-primary' %>
+
+
+	<%= link_to project_path(@project), class:'btn btn-primary' do %>
+ <i class="glyphicon glyphicon-chevron-left">Voltar</i>
+ 	<% end%>
+
+</div>
+</br>

@@ -1,0 +1,16 @@
+<%= form_for([@project,@audit,@unconformity,@corrective_action]) do |f| %>
+	<%= render 'layouts/errors', object: @corrective_action %>
+		<p class="form-group">
+			<%= f.label :Identificação %></br>
+			<%= f.text_field :name, autofocus: true, class:"form-control" %>
+		</p>
+
+		<p class="form-group">
+			<%= f.label :Descrição %></br>
+			<%= f.text_area :description, placeholder:"Descreva a Ação Corretiva", class:"form-control"%>
+		</p>
+		<%= f.submit class:'btn btn-primary' %>
+		<%= link_to 'Cancelar', root_path, class:'btn btn-default' %>
+		</p>
+<%end%>
+

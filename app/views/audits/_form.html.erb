@@ -1,0 +1,29 @@
+<%= form_for([@project, @audit]) do |f| %>
+	<%= render 'layouts/errors', object: @audit %>
+		<p class="form-group">
+			<%= f.label :Identificação %></br>
+			<%= f.text_field :identification, autofocus: true, class:"form-control" %>
+		</p>
+		<p class="form-group">
+			<%= f.label :Data_da_auditoria %></br>
+			<%= f.date_select :datetime, class:"form-control" %>
+		</p>
+		<p class="form-group">
+			<%= f.label :Horário %></br>
+			<%= f.time_select :schedule, class:"form-control" %>
+		</p>
+
+		<p class="form-group">
+			<%= f.label :Tipo %></br>
+			<%= f.select :kind, Audit::KIND, prompt: 'Escolha', class:"form-control" %>
+		</p>
+
+		<p class="form-group">
+			<%= f.label :Descrição %></br>
+			<%= f.text_area :description, placeholder:"Descreva a auditoria", class:"form-control"%>
+		</p>
+		<%= f.submit class:'btn btn-primary' %>
+		<%= link_to 'Cancelar', project_audits_path(@project), class:'btn btn-default' %>
+		</p>
+<%end%>
+

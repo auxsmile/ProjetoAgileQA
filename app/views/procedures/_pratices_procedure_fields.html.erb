@@ -1,0 +1,10 @@
+<div class="nested-fields">
+	<div class="field">
+		<table class="table">
+			<tr>
+				<td><%= f.collection_select(:pratice_id, @pratice.order(:name), :id,:name,prompt: true) %></td>
+				<td><%= link_to_remove_association('', f, class:'glyphicon glyphicon-remove') %></td>
+			</tr>	
+		</table>
+	</div>
+</div>

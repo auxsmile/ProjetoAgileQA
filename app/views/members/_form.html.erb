@@ -1,0 +1,30 @@
+<%= form_for(@member) do |f| %>
+<%= render 'layouts/errors', object: @member %>
+
+<p class="form-group">
+	<%= f.label :Nome %></br>
+	<%= f.text_field :name, class:"form-control"%>
+</p>
+<p class="form-group">
+	<%= f.label :CPF, "CPF" %></br>
+	<%= f.text_field :cpf, id: 'cpf',class:"form-control"%>
+</p>
+<p class="form-group">
+	<%= f.label :Email %></br>
+	<%= f.text_field :email, class:"form-control" %>
+</p>
+<p class="form-group">
+	<%= f.label :Telefone %></br>
+	<%= f.text_field :phone, placeholder: 'Apenas números.', class:"form-control" %>
+</p>
+<p class="form-group">
+	<%= f.label :Perfil %></br>
+	<%= f.text_field :profile, class:"form-control"%>
+</p>
+
+<%= f.submit class:'btn btn-primary' %>
+<%= link_to 'Cancelar', members_path, class:'btn btn-default' %>
+</p>
+
+<%end%>
+

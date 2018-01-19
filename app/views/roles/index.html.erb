@@ -1,0 +1,31 @@
+<div class="container">
+	<% if @roles.size > 0 %>
+		<div class="panel panel-default">
+		 	<div class="panel-heading"><h3>Papéis<h3></div>
+			 	<% @roles.order(:name).each do |role| %>
+					<div class="row">
+						<div class="col-md-7">
+							<ul>
+									<%= link_to role.name, role%>
+									<%= link_to edit_role_path(role), class:'btn btn-link' do %>
+				 						<i class="glyphicon glyphicon-edit"></i>
+										<%end%>
+
+									<%= link_to role_path(role),method: :delete, data:{ confirm: "Deseja deletar este papel?"}, class:'btn btn-link' do %>
+										<i class="glyphicon glyphicon-remove-sign"></i>
+										<%end%>
+							</ul>
+						</div>
+					</div>
+				<% end %>
+		</div>							  
+	<% else %>
+			<div class='jumbotron'>
+				<h3>Não existem papéis cadastrados.</h3>
+			</div>
+	<%end%>
+
+			<%= link_to 'Cadastrar novo papel', new_role_path(@role), class: 'btn btn-primary' %>
+
+				<%= link_to "Voltar",root_path, class:'btn btn-default'%>
+</div>

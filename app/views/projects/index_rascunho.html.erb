@@ -1,0 +1,45 @@
+<div class="container">
+	<% @projects.each do |project| %>
+			<div class="row">
+				<div class="col-md-7">
+					<p><h2><%= link_to project.name , project%> <small><%= pluralize(project.audits.size, "Auditoria","Auditorias")%></small></h2></p>
+					
+							<% project.audits.order(:identification).each do |audit| %>
+							  <center>
+									<% if audit.completed == "Sim" %>
+										<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-success' %>
+									<% elsif audit.completed == "Não" %>
+										<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-danger' %>
+									<% else %>
+										<%= link_to audit.identification, project_audit_path(project, audit), class: 'btn btn-default' %>
+									<%end%>
+								</center>
+	    					</br>
+	    					<% if audit.unconformities.size > 0 %>
+	    						<% audit.unconformities.each do |unconformity| %>
+	        					<h4><%= link_to unconformity.name , project_audit_unconformity_path(project, audit, unconformity), class:'navbar-brand'%></h4>
+	        						 
+	          					<% if unconformity.corrective_action.present? %>
+		          					<% if unconformity.corrective_action.completed == "Sim" %>
+													<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(project, audit, unconformity, unconformity.corrective_action), class: 'btn btn-success' %> &nbsp
+												<% elsif unconformity.corrective_action.completed == "Não" %>
+													<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(project, audit, unconformity, unconformity.corrective_action), class: 'btn btn-danger' %>	
+												<% else %>
+													<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(project, audit, unconformity, unconformity.corrective_action), class: 'btn btn-default' %>
+												<%end%>
+											<%else%>
+								  			<%= link_to 'Criar ação corretiva', new_project_audit_unconformity_corrective_action_path(project, audit, unconformity), class: 'btn btn-primary' %></td>
+								  		<%end%>
+								  <%end%>
+	          		<%else%>
+	          			<small>Não possui Não Conformidades</small>
+	          		<%end%>
+	          	<%end%>
+				</div>
+			</div>
+			<hr>
+		</div>
+  <%end%>
+</div>
+
+class="table table-hover table-condensed"

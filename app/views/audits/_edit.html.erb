@@ -1,0 +1,12 @@
+<small class="form-group">
+			<div class="auditoria_realizada">
+			<%= form_for([@project, @audit])  do |f| %>
+				<%= f.label :Auditoria_concluída? %></br>
+				<%= f.radio_button :completed, 'Sim' %> Sim
+				<%= f.radio_button :completed, 'Não' %> Não
+				<%= f.radio_button :completed, 'Null'%> Aberta
+				<%= f.submit :Atualizar, small_class:'btn btn-primary' %>
+			<% end %>
+			</div>
+			</small>		
+		</div>

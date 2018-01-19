@@ -1,0 +1,46 @@
+<% if @audit.unconformities.size > 0 %>
+		<div class="panel panel-default">
+		  <div class="panel-heading"><h3>Não conformidades<h3></div>
+
+		  <!-- Table -->
+		  <table class="table">
+		  	<tr><td><h4>Nome</td></h4><td><h4>Descrição</td></h4><td><h4>Ação Corretiva</td></tr></h4>
+		  	
+		  	<% @unconformities.each do |unconformity| %>
+		  		
+		  		<tr>
+		  			<td><%= link_to unconformity.name , project_audit_unconformity_path(@project, @audit, unconformity)%></td>
+		  			<td><%= unconformity.description %></td>
+			  		
+			  		<% if unconformity.corrective_action.present? %>
+				  		<td><% if unconformity.corrective_action.completed == "Sim" %>
+								<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(@project, @audit, unconformity, unconformity.corrective_action), class: 'btn btn-success' %> &nbsp
+							<% elsif unconformity.corrective_action.completed == "Não" %>
+								<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(@project, @audit, unconformity, unconformity.corrective_action), class: 'btn btn-danger' %>	
+							<% else %>
+								<%= link_to unconformity.corrective_action.name, project_audit_unconformity_corrective_action_path(@project, @audit, unconformity, unconformity.corrective_action), class: 'btn btn-default' %>
+							<%end%></td>
+			  		<%else%>
+			  			<td><%= link_to 'Criar ação corretiva', new_project_audit_unconformity_corrective_action_path(@project, @audit, unconformity), class: 'btn btn-primary' %></td>
+			  		<%end%>
+			  		
+					</tr>
+		  	<% end %>
+		  </table>
+
+			  <%= link_to new_project_audit_unconformity_path(@project, @audit), class:'btn btn-link' do %>
+			  <i class="glyphicon glyphicon-plus"></i>
+			  <%end%>
+		</div>
+			
+		<% else %>
+		<div class="panel panel-default">
+		 <div class="panel-heading"><h3>Não conformidades<h3></div>
+		 <table class="table">
+		  <td><b>Vazio</b><td>
+		  </table>
+		  <%= link_to new_project_audit_unconformity_path(@project, @audit), class:'btn btn-link' do %>
+		 		<i class="glyphicon glyphicon-plus"></i>
+			<%end%>
+		</div>
+		<%end%>

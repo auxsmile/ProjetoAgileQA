@@ -1,0 +1,2 @@
+class ProceduresProjectsController < ApplicationController
+end
