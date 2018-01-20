@@ -4,5 +4,4 @@ Sistema Web para Garantia da Qualidade usando Metodologias Ágeis Flexíveis.
 
 Projeto de Estágio Supervisionado do Curso de Ciência da Computação - UNEMAT.
 
-
-<tt>rake doc:app</tt>.
+Desenvolvido em Ruby on Rails.
